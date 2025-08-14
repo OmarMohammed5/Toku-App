@@ -39,69 +39,83 @@ class TokuHomeScreenContent extends StatelessWidget {
         ),
         SizedBox(height: 20),
         CustomImage(),
-        SizedBox(height: 40),
-        CustomButton(
-          color: kNumbersColor,
-          icon: Icons.numbers,
-          text: "Numbers",
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return NumbersScreen();
+        SizedBox(height: 30),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CustomButton(
+                color: kNumbersColor,
+                icon: Icons.numbers,
+                text: "Numbers",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return NumbersScreen();
+                      },
+                    ),
+                  );
                 },
               ),
-            );
-          },
+              CustomButton(
+                color: kFamilyColor,
+                icon: Icons.group,
+                text: "Family",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return FamilyMembersScreen();
+                      },
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
         SizedBox(height: 20),
-        CustomButton(
-          color: kFamilyColor,
-          icon: Icons.group,
-          text: "Family Members",
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return FamilyMembersScreen();
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CustomButton(
+                color: kColors,
+                icon: Icons.color_lens_sharp,
+                text: "Colors",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ColorsScreen();
+                      },
+                    ),
+                  );
                 },
               ),
-            );
-          },
-        ),
-        SizedBox(height: 20),
-        CustomButton(
-          color: kColors,
-          icon: Icons.color_lens_sharp,
-          text: "Colors",
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return ColorsScreen();
+              CustomButton(
+                color: kPharasesColor,
+                icon: Icons.group,
+                text: "Phrases",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return PhrasesScreen();
+                      },
+                    ),
+                  );
                 },
               ),
-            );
-          },
-        ),
-        SizedBox(height: 20),
-        CustomButton(
-          color: kPharasesColor,
-          icon: Icons.menu_book_sharp,
-          text: "Phrases",
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return PhrasesScreen();
-                },
-              ),
-            );
-          },
+            ],
+          ),
         ),
       ],
     );

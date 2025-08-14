@@ -15,7 +15,7 @@ class _FamilyMembersScreenState extends State<FamilyMembersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(text: "Family Members"),
+      appBar: CustomAppBar(text: "Family"),
       body: ListView.builder(
         itemCount: familyMembers.length,
         itemBuilder: (context, index) {

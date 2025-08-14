@@ -16,45 +16,43 @@ class CustomButton extends StatelessWidget {
   final Color color;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: InkWell(
-        onTap: onTap,
-        child: Container(
-          height: 65,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: color,
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.brown.shade300.withValues(alpha: 0.7),
-                blurRadius: 10,
-                spreadRadius: 1,
-                offset: Offset(0, 10),
-              ),
-            ],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              children: [
-                Icon(icon, color: Colors.white, size: 30),
-                SizedBox(width: 20),
-                Text(
-                  text,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    fontFamily: GoogleFonts.raleway().fontFamily,
-                  ),
-                ),
-                Spacer(),
-                Icon(Icons.arrow_forward_ios, color: Colors.white, size: 20),
-              ],
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        height: 170,
+        width: 170,
+        decoration: BoxDecoration(
+          color: color,
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.brown.shade300.withValues(alpha: 0.7),
+              blurRadius: 10,
+              spreadRadius: 1,
+              offset: Offset(0, 10),
             ),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, color: Colors.white, size: 30),
+              SizedBox(height: 10),
+              Text(
+                text,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  fontFamily: GoogleFonts.raleway().fontFamily,
+                ),
+              ),
+              // SizedBox(height: 5),
+              // Icon(Icons.arrow_forward_ios, color: Colors.white, size: 20),
+            ],
           ),
         ),
       ),
