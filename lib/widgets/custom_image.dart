@@ -11,21 +11,9 @@ class CustomImage extends StatelessWidget {
       decoration: BoxDecoration(
         color: Color(0xFFFEEDB5),
         shape: BoxShape.circle,
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Colors.brown.shade300.withValues(alpha: 0.7),
-        //     blurRadius: 10,
-        //     spreadRadius: 1,
-        //     offset: Offset(0, 10),
-        //   ),
-        // ],
       ),
       child: Center(
-        child: Image.asset(
-          "assets/images/student.png",
-          height: 130,
-          width: 130,
-        ),
+        child: Image.asset("assets/images/std.png", height: 130, width: 130),
       ),
     );
   }
