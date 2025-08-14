@@ -10,6 +10,10 @@ class CustomArticleCard extends StatelessWidget {
   final ItemModel item;
   final Color color;
 
+  // مشغّل وصوت حالي مشتركين بين كل البطاقات
+  static final AudioPlayer _player = AudioPlayer();
+  static String? _currentSource; // المسار الحالي المشغّل
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +28,7 @@ class CustomArticleCard extends StatelessWidget {
             color: Colors.brown.shade300.withValues(alpha: 0.5),
             blurRadius: 10,
             spreadRadius: 1,
-            offset: Offset(0, 10),
+            offset: const Offset(0, 10),
           ),
         ],
       ),
@@ -34,7 +38,7 @@ class CustomArticleCard extends StatelessWidget {
           Container(
             height: 100,
             width: 100,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: kPrimaryColor,
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.only(
@@ -49,7 +53,7 @@ class CustomArticleCard extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(width: 20),
+          const SizedBox(width: 20),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -71,13 +75,40 @@ class CustomArticleCard extends StatelessWidget {
               ),
             ],
           ),
-          Spacer(),
-          IconButton(
-            onPressed: () {
-              final player = AudioPlayer();
-              player.play(AssetSource(item.sound));
+          const Spacer(),
+
+          // هنا بنبني الأيقونة حسب حالة المشغّل
+          StreamBuilder<PlayerState>(
+            stream: _player.onPlayerStateChanged,
+            initialData: PlayerState.stopped,
+            builder: (context, snapshot) {
+              final state = snapshot.data ?? PlayerState.stopped;
+              final isThisItemActive = _currentSource == item.sound;
+              final isPlayingThis =
+                  isThisItemActive && state == PlayerState.playing;
+
+              return IconButton(
+                onPressed: () async {
+                  if (!isThisItemActive) {
+                    _currentSource = item.sound;
+                    await _player.play(AssetSource(item.sound));
+                    return;
+                  }
+                  if (state == PlayerState.playing) {
+                    await _player.pause();
+                  } else if (state == PlayerState.paused) {
+                    await _player.resume();
+                  } else {
+                    await _player.play(AssetSource(item.sound));
+                  }
+                },
+                icon: Icon(
+                  isPlayingThis ? Icons.pause : Icons.play_arrow,
+                  size: 28,
+                  color: Colors.white,
+                ),
+              );
             },
-            icon: Icon(Icons.play_arrow, size: 28, color: Colors.white),
           ),
         ],
       ),
