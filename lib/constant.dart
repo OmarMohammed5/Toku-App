@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:toku_app/models/item_model.dart';
 
-const Color kPrimaryColor = Color(0XFFFEFCC9);
+const Color kPrimaryColor = Color(0XFFFEFEE9);
 const Color kNumbersColor = Color(0XFFF09127);
 const Color kFamilyColor = Color(0XFF3D873A);
 const Color kColors = Color(0XFF5E397C);
