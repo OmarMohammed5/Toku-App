@@ -178,7 +178,7 @@ final List<ItemModel> colors = [
   ItemModel(
     image: "assets/images/colors/color_white.png",
     jpName: "Shiroi",
-    enName: "Younger Brother",
+    enName: "White",
     sound: "sounds/colors/white.wav",
   ),
   ItemModel(
