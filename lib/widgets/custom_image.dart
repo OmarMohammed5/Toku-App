@@ -6,14 +6,14 @@ class CustomImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 180,
-      height: 180,
+      width: 160,
+      height: 160,
       decoration: BoxDecoration(
         color: Color(0xFFFEEDB5),
         shape: BoxShape.circle,
       ),
       child: Center(
-        child: Image.asset("assets/images/std.png", height: 130, width: 130),
+        child: Image.asset("assets/images/std.png", height: 110, width: 110),
       ),
     );
   }
