@@ -1,4 +1,3 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:toku_app/constant.dart';
@@ -9,10 +8,6 @@ class CustomArticleCard extends StatelessWidget {
 
   final ItemModel item;
   final Color color;
-
-  // مشغّل وصوت حالي مشتركين بين كل البطاقات
-  static final AudioPlayer _player = AudioPlayer();
-  static String? _currentSource; // المسار الحالي المشغّل
 
   @override
   Widget build(BuildContext context) {
@@ -76,39 +71,11 @@ class CustomArticleCard extends StatelessWidget {
             ],
           ),
           const Spacer(),
-
-          // هنا بنبني الأيقونة حسب حالة المشغّل
-          StreamBuilder<PlayerState>(
-            stream: _player.onPlayerStateChanged,
-            initialData: PlayerState.stopped,
-            builder: (context, snapshot) {
-              final state = snapshot.data ?? PlayerState.stopped;
-              final isThisItemActive = _currentSource == item.sound;
-              final isPlayingThis =
-                  isThisItemActive && state == PlayerState.playing;
-
-              return IconButton(
-                onPressed: () async {
-                  if (!isThisItemActive) {
-                    _currentSource = item.sound;
-                    await _player.play(AssetSource(item.sound));
-                    return;
-                  }
-                  if (state == PlayerState.playing) {
-                    await _player.pause();
-                  } else if (state == PlayerState.paused) {
-                    await _player.resume();
-                  } else {
-                    await _player.play(AssetSource(item.sound));
-                  }
-                },
-                icon: Icon(
-                  isPlayingThis ? Icons.pause : Icons.play_arrow,
-                  size: 28,
-                  color: Colors.white,
-                ),
-              );
+          IconButton(
+            onPressed: () {
+              item.playSound();
             },
+            icon: const Icon(Icons.play_arrow, size: 28, color: Colors.white),
           ),
         ],
       ),
