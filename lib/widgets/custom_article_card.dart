@@ -16,12 +16,17 @@ class CustomArticleCard extends StatefulWidget {
 
 class _CustomArticleCardState extends State<CustomArticleCard> {
   bool isPlaying = false;
+
+  /// controller of AudioPlayer
   final AudioPlayer _player = AudioPlayer();
 
   @override
   void initState() {
     super.initState();
+
+    /// Listen to >>> is playing = display puse icon
     _player.onPlayerComplete.listen((event) {
+      /// update
       setState(() {
         isPlaying = false;
       });
