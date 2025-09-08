@@ -35,7 +35,7 @@ class CustomPhrasesCard extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(12),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -48,18 +48,18 @@ class CustomPhrasesCard extends StatelessWidget {
                   jpName,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: GoogleFonts.raleway().fontFamily,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: GoogleFonts.acme().fontFamily,
                   ),
                 ),
                 Text(
                   enName,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: GoogleFonts.raleway().fontFamily,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: GoogleFonts.acme().fontFamily,
                   ),
                 ),
               ],
