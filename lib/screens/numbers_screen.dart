@@ -14,17 +14,23 @@ class NumbersScreen extends StatefulWidget {
 class _NumbersScreenState extends State<NumbersScreen> {
   @override
   Widget build(BuildContext context) {
+    final screenHieght = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: CustomAppBar(text: "Numbers"),
       body: ListView.builder(
         itemCount: numbers.length,
         itemBuilder: (context, index) {
           final item = numbers[index];
-          return Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CustomArticleCard(
+          return Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: screenWidth * 0.03,
+              vertical: screenHieght * 0.005,
+            ),
+            child: Column(
+              children: [
+                CustomArticleCard(
                   color: kNumbersColor,
                   item: ItemModel(
                     jpName: item.jpName,
@@ -33,8 +39,8 @@ class _NumbersScreenState extends State<NumbersScreen> {
                     image: item.image,
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
         },
       ),

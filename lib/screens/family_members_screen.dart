@@ -14,17 +14,23 @@ class FamilyMembersScreen extends StatefulWidget {
 class _FamilyMembersScreenState extends State<FamilyMembersScreen> {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: CustomAppBar(text: "Family"),
       body: ListView.builder(
         itemCount: familyMembers.length,
         itemBuilder: (context, index) {
           final item = familyMembers[index];
-          return Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CustomArticleCard(
+          return Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: screenWidth * 0.03,
+              vertical: screenHeight * 0.005,
+            ),
+            child: Column(
+              children: [
+                CustomArticleCard(
                   color: kFamilyColor,
                   item: ItemModel(
                     jpName: item.jpName,
@@ -33,8 +39,8 @@ class _FamilyMembersScreenState extends State<FamilyMembersScreen> {
                     image: item.image!,
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
         },
       ),
