@@ -50,14 +50,16 @@ class CustomArticleCard extends StatelessWidget {
           ),
           const SizedBox(width: 20),
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 20),
               Text(
                 item.jpName,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
-                  fontFamily: GoogleFonts.russoOne().fontFamily,
+                  fontFamily: GoogleFonts.acme().fontFamily,
                 ),
               ),
               Text(
@@ -65,7 +67,7 @@ class CustomArticleCard extends StatelessWidget {
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
-                  fontFamily: GoogleFonts.russoOne().fontFamily,
+                  fontFamily: GoogleFonts.acme().fontFamily,
                 ),
               ),
             ],
