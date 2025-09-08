@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:toku_app/constant.dart';
@@ -15,6 +16,17 @@ class CustomArticleCard extends StatefulWidget {
 
 class _CustomArticleCardState extends State<CustomArticleCard> {
   bool isPlaying = false;
+  final AudioPlayer _player = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _player.onPlayerComplete.listen((event) {
+      setState(() {
+        isPlaying = false;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,8 +93,14 @@ class _CustomArticleCardState extends State<CustomArticleCard> {
           ),
           const Spacer(),
           IconButton(
-            onPressed: () {
-              widget.item.playSound();
+            onPressed: () async {
+              if (isPlaying) {
+                await _player.pause();
+                setState(() => isPlaying = false);
+              } else {
+                await _player.play(AssetSource(widget.item.sound));
+                setState(() => isPlaying = true);
+              }
             },
             icon: Icon(
               isPlaying ? Icons.pause : Icons.play_arrow,
