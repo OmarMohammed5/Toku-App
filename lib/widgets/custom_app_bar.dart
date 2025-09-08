@@ -23,7 +23,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: Colors.white,
           fontWeight: FontWeight.bold,
           fontSize: 24,
-          fontFamily: GoogleFonts.raleway().fontFamily,
+          fontFamily: GoogleFonts.acme().fontFamily,
         ),
       ),
     );

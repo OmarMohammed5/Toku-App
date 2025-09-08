@@ -47,7 +47,7 @@ class CustomButton extends StatelessWidget {
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
-                  fontFamily: GoogleFonts.raleway().fontFamily,
+                  fontFamily: GoogleFonts.acme().fontFamily,
                 ),
               ),
               // SizedBox(height: 5),

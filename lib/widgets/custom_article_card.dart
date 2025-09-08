@@ -3,11 +3,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:toku_app/constant.dart';
 import 'package:toku_app/models/item_model.dart';
 
-class CustomArticleCard extends StatelessWidget {
+class CustomArticleCard extends StatefulWidget {
   const CustomArticleCard({super.key, required this.color, required this.item});
 
   final ItemModel item;
   final Color color;
+
+  @override
+  State<CustomArticleCard> createState() => _CustomArticleCardState();
+}
+
+class _CustomArticleCardState extends State<CustomArticleCard> {
+  bool isPlaying = false;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +22,7 @@ class CustomArticleCard extends StatelessWidget {
       height: 100,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: color,
+        color: widget.color,
         shape: BoxShape.rectangle,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
@@ -42,7 +49,7 @@ class CustomArticleCard extends StatelessWidget {
               ),
             ),
             child: Image.asset(
-              item.image!,
+              widget.item.image!,
               height: 30,
               width: 30,
               fit: BoxFit.cover,
@@ -55,7 +62,7 @@ class CustomArticleCard extends StatelessWidget {
             children: [
               SizedBox(height: 20),
               Text(
-                item.jpName,
+                widget.item.jpName,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -63,7 +70,7 @@ class CustomArticleCard extends StatelessWidget {
                 ),
               ),
               Text(
-                item.enName,
+                widget.item.enName,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -75,9 +82,13 @@ class CustomArticleCard extends StatelessWidget {
           const Spacer(),
           IconButton(
             onPressed: () {
-              item.playSound();
+              widget.item.playSound();
             },
-            icon: const Icon(Icons.play_arrow, size: 28, color: Colors.white),
+            icon: Icon(
+              isPlaying ? Icons.pause : Icons.play_arrow,
+              size: 28,
+              color: Colors.white,
+            ),
           ),
         ],
       ),
