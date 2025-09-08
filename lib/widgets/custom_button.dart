@@ -39,19 +39,17 @@ class CustomButton extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon, color: Colors.white, size: 30),
+              Icon(icon, color: Colors.white, size: 35),
               SizedBox(height: 10),
               Text(
                 text,
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontSize: 22,
                   fontFamily: GoogleFonts.acme().fontFamily,
                 ),
               ),
-              // SizedBox(height: 5),
-              // Icon(Icons.arrow_forward_ios, color: Colors.white, size: 20),
             ],
           ),
         ),

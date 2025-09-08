@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:toku_app/constant.dart';
@@ -47,7 +48,7 @@ class TokuHomeScreenContent extends StatelessWidget {
             children: [
               CustomButton(
                 color: kNumbersColor,
-                icon: Icons.numbers,
+                icon: CupertinoIcons.number,
                 text: "Numbers",
                 onTap: () {
                   Navigator.push(
@@ -62,7 +63,7 @@ class TokuHomeScreenContent extends StatelessWidget {
               ),
               CustomButton(
                 color: kFamilyColor,
-                icon: Icons.group,
+                icon: CupertinoIcons.group,
                 text: "Family",
                 onTap: () {
                   Navigator.push(
@@ -86,7 +87,7 @@ class TokuHomeScreenContent extends StatelessWidget {
             children: [
               CustomButton(
                 color: kColors,
-                icon: Icons.color_lens_sharp,
+                icon: Icons.color_lens_outlined,
                 text: "Colors",
                 onTap: () {
                   Navigator.push(
@@ -101,7 +102,7 @@ class TokuHomeScreenContent extends StatelessWidget {
               ),
               CustomButton(
                 color: kPharasesColor,
-                icon: Icons.group,
+                icon: CupertinoIcons.chat_bubble_text,
                 text: "Phrases",
                 onTap: () {
                   Navigator.push(
@@ -117,6 +118,7 @@ class TokuHomeScreenContent extends StatelessWidget {
             ],
           ),
         ),
+        SizedBox(height: 20),
       ],
     );
   }
