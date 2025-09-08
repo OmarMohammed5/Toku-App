@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:toku_app/constant.dart';
 import 'package:toku_app/models/item_model.dart';
 
-class CustomPhrasesCard extends StatelessWidget {
+class CustomPhrasesCard extends StatefulWidget {
   const CustomPhrasesCard({
     super.key,
     required this.jpName,
@@ -15,6 +15,28 @@ class CustomPhrasesCard extends StatelessWidget {
   final String jpName;
   final String enName;
   final ItemModel itemModel;
+
+  @override
+  State<CustomPhrasesCard> createState() => _CustomPhrasesCardState();
+}
+
+class _CustomPhrasesCardState extends State<CustomPhrasesCard> {
+  bool isPlaying = false;
+
+  /// controller of AudioPlayer
+  final player = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+
+    /// Listen to >>> is playing = display puse icon
+    player.onPlayerComplete.listen((event) {
+      setState(() {
+        isPlaying = false;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +67,7 @@ class CustomPhrasesCard extends StatelessWidget {
               children: [
                 SizedBox(height: 15),
                 Text(
-                  jpName,
+                  widget.jpName,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -54,7 +76,7 @@ class CustomPhrasesCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  enName,
+                  widget.enName,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -66,11 +88,24 @@ class CustomPhrasesCard extends StatelessWidget {
             ),
             Spacer(),
             IconButton(
-              onPressed: () {
-                final player = AudioPlayer();
-                player.play(AssetSource(itemModel.sound));
+              onPressed: () async {
+                if (isPlaying) {
+                  await player.pause();
+                  setState(() {
+                    isPlaying = false;
+                  });
+                } else {
+                  await player.play(AssetSource(widget.itemModel.sound));
+                  setState(() {
+                    isPlaying = true;
+                  });
+                }
               },
-              icon: Icon(Icons.play_arrow, size: 28, color: Colors.white),
+              icon: Icon(
+                isPlaying ? Icons.pause : Icons.play_arrow,
+                size: 28,
+                color: Colors.white,
+              ),
             ),
           ],
         ),
