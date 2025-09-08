@@ -19,7 +19,7 @@ class TokuHomeScreenContent extends StatelessWidget {
       children: [
         Center(
           child: Text(
-            "Toku App",
+            "Toku",
             style: TextStyle(
               color: Colors.brown.shade700,
               fontSize: 40,
@@ -28,7 +28,7 @@ class TokuHomeScreenContent extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 10),
         Text(
           "Learn Japanese with Toku",
           style: TextStyle(
