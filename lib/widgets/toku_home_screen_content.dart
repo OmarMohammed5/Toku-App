@@ -14,112 +14,114 @@ class TokuHomeScreenContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(
-          child: Text(
-            "Toku",
-            style: TextStyle(
-              color: Colors.brown.shade700,
-              fontSize: 44,
-              fontWeight: FontWeight.bold,
-              fontFamily: GoogleFonts.acme().fontFamily,
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          vertical: screenHeight * 0.03,
+          horizontal: screenWidth * 0.05,
+        ),
+        child: Column(
+          children: [
+            Text(
+              "Toku",
+              style: TextStyle(
+                color: Colors.brown.shade700,
+                fontSize: screenWidth * 0.1, // responsive text size
+                fontWeight: FontWeight.bold,
+                fontFamily: GoogleFonts.acme().fontFamily,
+              ),
             ),
-          ),
-        ),
-        SizedBox(height: 10),
-        Text(
-          "Learn Japanese with Toku",
-          style: TextStyle(
-            color: Colors.brown.shade300,
-            fontSize: 24,
-            fontFamily: GoogleFonts.acme().fontFamily,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        SizedBox(height: 20),
-        CustomImage(),
-        SizedBox(height: 30),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomButton(
-                color: kNumbersColor,
-                icon: CupertinoIcons.number,
-                text: "Numbers",
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return NumbersScreen();
-                      },
-                    ),
-                  );
-                },
+            SizedBox(height: screenHeight * 0.01),
+            Text(
+              "Learn Japanese with Toku",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.brown.shade300,
+                fontSize: screenWidth * 0.05,
+                fontFamily: GoogleFonts.acme().fontFamily,
+                fontWeight: FontWeight.w500,
               ),
-              CustomButton(
-                color: kFamilyColor,
-                icon: CupertinoIcons.group,
-                text: "Family",
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return FamilyMembersScreen();
-                      },
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
+            ),
+            SizedBox(height: screenHeight * 0.03),
+            CustomImage(),
+            SizedBox(height: screenHeight * 0.04),
+
+            Row(
+              children: [
+                Expanded(
+                  child: CustomButton(
+                    color: kNumbersColor,
+                    icon: CupertinoIcons.number,
+                    text: "Numbers",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NumbersScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(width: screenWidth * 0.04),
+                Expanded(
+                  child: CustomButton(
+                    color: kFamilyColor,
+                    icon: CupertinoIcons.group,
+                    text: "Family",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FamilyMembersScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: screenHeight * 0.03),
+
+            Row(
+              children: [
+                Expanded(
+                  child: CustomButton(
+                    color: kColors,
+                    icon: Icons.color_lens_outlined,
+                    text: "Colors",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ColorsScreen()),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(width: screenWidth * 0.04),
+                Expanded(
+                  child: CustomButton(
+                    color: kPharasesColor,
+                    icon: CupertinoIcons.chat_bubble_text,
+                    text: "Phrases",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PhrasesScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
-        SizedBox(height: 20),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomButton(
-                color: kColors,
-                icon: Icons.color_lens_outlined,
-                text: "Colors",
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return ColorsScreen();
-                      },
-                    ),
-                  );
-                },
-              ),
-              CustomButton(
-                color: kPharasesColor,
-                icon: CupertinoIcons.chat_bubble_text,
-                text: "Phrases",
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return PhrasesScreen();
-                      },
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
-        SizedBox(height: 20),
-      ],
+      ),
     );
   }
 }
