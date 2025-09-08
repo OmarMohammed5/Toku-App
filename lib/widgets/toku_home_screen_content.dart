@@ -22,7 +22,7 @@ class TokuHomeScreenContent extends StatelessWidget {
             "Toku",
             style: TextStyle(
               color: Colors.brown.shade700,
-              fontSize: 40,
+              fontSize: 44,
               fontWeight: FontWeight.bold,
               fontFamily: GoogleFonts.acme().fontFamily,
             ),
@@ -42,7 +42,7 @@ class TokuHomeScreenContent extends StatelessWidget {
         CustomImage(),
         SizedBox(height: 30),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 18),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -81,7 +81,7 @@ class TokuHomeScreenContent extends StatelessWidget {
         ),
         SizedBox(height: 20),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 18),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
